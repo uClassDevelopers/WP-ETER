@@ -189,8 +189,8 @@ if(!empty($_POST)) {
                             <h3>Bildtext: <input type="text" name="ti_title[]" value="<?php echo $title; ?>" /> | Position: <input type="text" name="ti_position[]" value="<?php echo $position; ?>"></h3>
                             Länk till bild: <input style="vertical-align: middle;" type="text" name="ti_image_url[]" value="<?php echo $image_url; ?>">
                             
-                            <input type="text" name="ti_id[]" value="<?php echo $id; ?>" />   
-                            <input type="text" name="id[]" value="<?php echo $id; ?>" />
+                            <input type="hidden" name="ti_id[]" value="<?php echo $id; ?>" />   
+                            <input type="hidden" name="id[]" value="<?php echo $id; ?>" />
 
                             <input type="hidden" name="ti_url[]" value="<?php echo $on_link; ?>">
                             <input type="hidden" name="ti_content[]" value="<?php echo $content; ?>">
