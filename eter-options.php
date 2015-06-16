@@ -26,16 +26,7 @@ if(!empty($_POST)) {
     $fieldCountFR = count($_POST['fr_id']);
     $fieldCountTI = count($_POST['ti_id']);
     $fieldCountRTI = count($_POST['ti_delete']);
-    /*
-    for ($j = 0; $j < $fieldCountTI  $j++) {
-        if($_POST['ti_delete'][$j] == "1") {
-            $rows_affected = $wpdb->query(
-                $wpdb->prepare(
-                    'DELETE from '. $table_name .' WHERE id = \''.$_POST['id'][$j].'\' AND ti_delete=1 AND row=3;'
-                )
-            ); // $wpdb->query  
-        }
-    }*/
+
     //Loop through all top images
     for ($i = 0; $i < $fieldCountTI; $i++) {
         //If post id is empty create new row in table
@@ -64,10 +55,6 @@ if(!empty($_POST)) {
             }
          }
     }
-    foreach ($_POST['delete_id'] as $deleteId) {
-    $deleteId = (int)$deleteId;
-    $db->query("DELETE FROM faktura_materialer WHERE id = $deleteId");
-}
     //Loop through all three top row boxes
     for ($i = 0; $i < $fieldCountFR; $i++) { 
         // if the content is static set is_dyn to 0 and update fileds
