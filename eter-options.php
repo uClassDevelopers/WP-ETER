@@ -139,12 +139,12 @@ if(!empty($_POST)) {
     });
     });
 </script>
-<a class="animated zoomInDown" id="made_by_uclass" href="http://uclass.se/">
-    Made by uClassDevs<img src="<? bloginfo('stylesheet_directory');?>/uclass_logo.png" alt="uClass Logo"/>
-</a>
 <!-- Wrap everything in a form tag, for makeing it easier to post to the processing  script on top of file -->
 <form action=""  method="post" id="ETERStartForm">
     <div id="form-wrapper">
+        <a class="animated zoomInDown" id="made_by_uclass" href="http://uclass.se/">
+            Made by uClassDevs<img src="<? bloginfo('stylesheet_directory');?>/uclass_logo.png" alt="uClass Logo"/>
+        </a>
         <h1>ETER iOS Application Options</h1>
         <h1>| Startsida</h1>
         <div style="margin-left: 2%;">
@@ -175,11 +175,11 @@ if(!empty($_POST)) {
                         <div>
                             <h3>Bildtext: <input type="text" name="ti_title[]" value="<?php echo $title; ?>" /> | Position: <input type="text" name="ti_position[]" value="<?php echo $position; ?>"></h3>
                             Länk till bild: <input style="vertical-align: middle;" type="text" name="ti_image_url[]" value="<?php echo $image_url; ?>">
+                            Länk på bild: <input type="text" name="ti_url[]" value="<?php echo $url; ?>">
                             
                             <input type="hidden" name="ti_id[]" value="<?php echo $id; ?>" />   
                             <input type="hidden" name="id[]" value="<?php echo $id; ?>" />
 
-                            <input type="hidden" name="ti_url[]" value="<?php echo $on_link; ?>">
                             <input type="hidden" name="ti_content[]" value="<?php echo $content; ?>">
                             <input type="hidden" name="ti_row[]" value="3">
                             <hr/>
