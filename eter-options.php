@@ -303,7 +303,7 @@ if(!empty($_POST)) {
                 <p>Image url: <input type="text" name="sr_image_url[]" value="<?php echo $image_url; ?>"></p>
                 <p><span class="txt-al-floated-left">Fritext:</span><br> <textarea name="content[]"><?php echo $content; ?></textarea></p>
                 <input type="hidden" name="sr_id[]" value="<?php echo $id; ?>" />
-                <input type="text" name="sr_row[]" value="<?php echo $row; ?>" />
+                <input type="hidden" name="sr_row[]" value="<?php echo $row; ?>" />
                 <input type="hidden" name="id[]" value="<?php echo $id; ?>" />
             </div>
             <? endforeach; ?>
