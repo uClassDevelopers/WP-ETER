@@ -29,11 +29,11 @@ function eter_start_install() {
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE $table_name (
-		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		id int(11) NOT NULL AUTO_INCREMENT,
 		row int NOT NULL,
-        postion int NOT NULL,
+        position int NOT NULL,
 		title tinytext NULL,
-		url text NULL,
+		on_link text NULL,
         image_url text NULL,
         content text NULL,
         is_dyn int NOT NULL,
@@ -91,15 +91,14 @@ function eter_courses_slider_install() {
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE $table_name (
-		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		id int(11) NOT NULL AUTO_INCREMENT,
 		row int NOT NULL,
         postion int NOT NULL,
 		title tinytext NULL,
-		url text NULL,
+		on_link text NULL,
+		course text NULL,
         image_url text NULL,
         content text NULL,
-        is_dyn int NOT NULL,
-        dyn_link text NULL,
 		UNIQUE KEY id (id)
 	) $charset_collate;";
 
