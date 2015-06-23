@@ -77,8 +77,71 @@ function eter_start_install_data() {
 		) 
 	);
 }
-//Do the db setup after theme selection
-add_action("after_switch_theme", 'eter_start_install', 'eter_start_install_data');
+//Setup eter_start table in wpdb
+global $eter_courses_slider_db_version;
+$eter_courses_slider_db_version = '1.0'; //Set version of table
+
+//Create the table and colums, also set correct formats on the columns
+function eter_courses_slider_install() {
+	global $wpdb;
+	global $eter_courses_slider_db_version;
+
+	$table_name = $wpdb->prefix . 'eter_courses_slider';
+	
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		row int NOT NULL,
+        postion int NOT NULL,
+		title tinytext NULL,
+		url text NULL,
+        image_url text NULL,
+        content text NULL,
+        is_dyn int NOT NULL,
+        dyn_link text NULL,
+		UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
+
+	add_option( 'eter_courses_slider_db_version', $eter_courses_slider_db_version );
+}
+
+//Populate the dtabase with startdata
+function eter_courses_slider_install_data() {
+	global $wpdb;
+	
+    $placeholder_row ='1';
+	$placeholder_position = '1';
+	$placeholder_title = 'ETER-iOS!';
+    $placeholder_url ='#tab/guides';
+    $placeholder_image_url = 'http://eter.rudbeck.info/wp-content/uploads/2014/05/ETER-logga_100_overstrykning.png';
+    $placeholder_content = 'it is working';
+    $placeholder_is_dyn ='0';
+    $placeholder_dyn_link = '';
+    
+	
+	$table_name = $wpdb->prefix . 'eter_courses_slider';
+	
+	$wpdb->insert( 
+		$table_name, 
+		array( 
+			'row' => $placeholder_row, 
+			'position' => $placeholder_position, 
+			'title' => $placeholder_title, 
+			'url' => $placeholder_url, 
+			'image_url' => $placeholder_image_url, 
+			'content' => $placeholder_content, 
+			'is_dyn' => $placeholder_is_dyn, 
+			'dyn_link' => $placeholder_dyn_link, 
+		) 
+	);
+}
+//Do the db setup after theme selection 'eter_courses_slider_install', 'eter_courses_slider_install_data'
+add_action("after_switch_theme", 'eter_start_install', 'eter_courses_install_data');
+add_action("after_switch_theme", 'eter_courses_slider_install', 'eter_courses_slider_install_data');
 
 //Setup a widget on dashboard describing css display none classes
 function eter_add_dashboard_widgets() {
@@ -100,10 +163,15 @@ function eter_dashboard_widget_function() {
 add_action('admin_menu', 'addEterMenu');
 function addEterMenu() {
     add_menu_page('ETER iOS Mobile App Options', 'ETER iOS Mobile App Options', 0, 'eter-ios-mobile-options', 'eterMenu');
+    add_submenu_page('eter-ios-mobile-options', 'ETER Startpage', 'ETER Startpage', 'manage_options', 'eter-ios-mobile-options' );
+    add_submenu_page('eter-ios-mobile-options', 'ETER Courses', 'ETER Courses', 0, 'eter-courses', 'eterCourses' );
     add_submenu_page('eter-ios-mobile-options', 'ETER Licences', 'ETER Licences', 0, 'eter-Licences', 'eterLicences' );
 }
 function eterMenu() {
     include 'eter-options.php';
+}
+function eterCourses() {
+    include 'eter-courses.php';
 }
 function eterLicences() {
 	
