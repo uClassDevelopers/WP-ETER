@@ -66,3 +66,12 @@ hr {
     border-bottom: 1px solid #A0A0A0; 
     padding: 15px;
 }
+.success {
+    padding: 5px;
+    padding-left: 10px;
+    border-left: 5px solid green;
+
+}
+.success .tgl-alert {
+    float: right;
+}

@@ -53,7 +53,7 @@ if(!empty($_POST)) {
             }
          }
     }
-    echo "Alla ".$fieldCount." fälten uppdaterades";
+    echo "<div class='notice success animated shake'> ".$fieldCount." st slides uppdaterades <span class='tgl-alert'>X</span></div>";
 }
 ?>
 <!-- GET daneden animate.css --> 
@@ -91,6 +91,11 @@ if(!empty($_POST)) {
         });
     }
     $(document).ready(function() {
+        $( ".tgl-alert" ).click(function() {
+          $( ".success" ).toggle( "slow", function() {
+            // Animation complete.
+          });
+        });
         get_courses();    
     });
     //Set new field count to zero

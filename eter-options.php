@@ -93,7 +93,7 @@ if(!empty($_POST)) {
             }
         }
     }
-    echo "Alla ".$fieldCount." fälten uppdaterades, var av ".$fieldCountTI." top images av dessa raderades ".$fieldCountRTI.", ".$fieldCountFR." boxar på rad 1 samt ".$fieldCountFR."  boxar på rad 2";
+    echo "<p class='notice success animated shake'>".$fieldCount." stycken fält uppdaterades, var av dessa, ".$fieldCountTI."st top images (av dessa raderades ".$fieldCountRTI."), ".$fieldCountFR."st boxar på rad 1 samt ".$fieldCountFR."st boxar på rad 2<span class='tgl-alert'>X</span></p>";
 }
 ?>
 <!-- GET daneden animate.css --> 
@@ -104,6 +104,13 @@ if(!empty($_POST)) {
 <script type="text/javascript" src="<? bloginfo('stylesheet_directory');?>/jquery.min.js"></script>
 <!-- ETER-options.php jQuery scripts --> 
 <script type="text/javascript">
+    $(document).ready(function() {
+        $( ".tgl-alert" ).click(function() {
+          $( ".success" ).toggle( "slow", function() {
+            // Animation complete.
+          });
+        });
+    });
     //Set new field count to zero
     var count = 0;
     //When the object with id #add_field is pressed, append top_images_container with all needed fields
